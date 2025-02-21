@@ -1,0 +1,19 @@
+<div class="p-6 bg-gray-100 rounded-lg shadow-lg">
+    <h2 class="text-xl font-bold mb-4">Procesador de Matrices</h2>
+  
+    <textarea [(ngModel)]="inputText"
+      class="w-full p-2 border rounded-md"
+      placeholder="Ingresa una matriz en formato JSON">
+    </textarea>
+  
+    <button (click)="processMatrix()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md">
+      Procesar Matriz
+    </button>
+  
+    <div *ngIf="result" class="mt-4 p-4 bg-white rounded-md shadow-md">
+      <p><strong>Dimensión:</strong> {{ result.dimension }}</p>
+      <p><strong>Es uniforme:</strong> {{ result.straight ? 'Sí' : 'No' }}</p>
+      <p><strong>Suma total:</strong> {{ result.compute }}</p>
+    </div>
+  </div>
+  
