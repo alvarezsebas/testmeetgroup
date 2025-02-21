@@ -1,1 +1,38 @@
-<p>shop works!</p>
+<div class="max-w-4xl mx-auto mt-10 bg-white p-6 rounded-xl shadow-xl">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Gestión de Tiendas</h2>
+    
+    <div class="mb-4 flex space-x-2">
+      <input [(ngModel)]="nuevaTienda" class="border p-2 rounded w-full" placeholder="Nombre de la tienda" />
+      <button (click)="agregarTienda()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Agregar</button>
+    </div>
+  
+    <div class="flex space-x-4 border-b pb-2">
+      <button *ngFor="let tienda of tiendas; let i = index" 
+              (click)="seleccionarTienda(i)" 
+              class="px-6 py-3 font-semibold rounded-t-lg transition-colors"
+              [class.bg-indigo-600]="i === tiendaSeleccionada"
+              [class.text-white]="i === tiendaSeleccionada"
+              [class.bg-gray-200]="i !== tiendaSeleccionada"
+              [class.text-gray-700]="i !== tiendaSeleccionada">
+        {{ tienda.nombre }}
+        <button (click)="eliminarTienda(i)" class="ml-2 text-red-500">✖</button>
+      </button>
+    </div>
+  
+    <div class="p-6">
+      <h2 class="text-xl font-bold text-gray-800">Productos de {{ tiendas[tiendaSeleccionada].nombre }}</h2>
+      
+      <div class="mb-4 flex space-x-2">
+        <input [(ngModel)]="nuevoProducto" class="border p-2 rounded w-full" placeholder="Nombre del producto" />
+        <button (click)="agregarProducto()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Agregar</button>
+      </div>
+      
+      <ul class="mt-4 space-y-3">
+        <li *ngFor="let producto of tiendas[tiendaSeleccionada].productos; let j = index" 
+            class="p-4 border rounded-lg shadow-md bg-gray-50 flex justify-between items-center">
+          {{ producto }}
+          <button (click)="eliminarProducto(j)" class="text-red-500">✖</button>
+        </li>
+      </ul>
+    </div>
+  </div>

@@ -1,14 +1,14 @@
-<!-- component -->
 <div class="min-h-screen bg-gray-50/50">
-    <app-sidebar/>
-    <div class="p-4 xl:ml-80">
-      
+  <!-- Mostrar solo si el usuario está logueado -->
+  <app-sidebar *ngIf="isLoggedIn()"></app-sidebar>
+
+  <div class="p-4" [ngClass]="{'xl:ml-80': isLoggedIn()}">
       <div class="mt-12">
-        <router-outlet/>
+          <router-outlet></router-outlet>
       </div>
       <div class="text-blue-gray-600">
-        <app-footer/>
+          <app-footer></app-footer>
       </div>
-    </div>
   </div>
-  
+</div>
+
