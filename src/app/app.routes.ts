@@ -9,39 +9,37 @@ import { authGuard } from './helpers/auth.guard';
 export const routes: Routes = [
 
     {
-        path: '',
-        loadComponent: () => import('./shared/layout/layout.component').then(m => m.LayoutComponent),
-        children: [
+        path: '', // Ruta base de la aplicación
+        loadComponent: () => import('./shared/layout/layout.component').then(m => m.LayoutComponent), // Carga el componente principal del layout
+        children: [ // Rutas hijas dentro del layout
             {
-                path: 'exercise1',
+                path: 'exercise1', // Ruta para Exercise1
                 loadComponent: () => import('./pages/exercise1/exercise1.component').then(m => m.Exercise1Component),
-                canActivate: [authGuard]
+                canActivate: [authGuard] // Protegida por el guard de autenticación
             },
             {
-                path: 'exercise2',
+                path: 'exercise2', // Ruta para Exercise2
                 loadComponent: () => import('./pages/exercise2/exercise2.component').then(m => m.Exercise2Component),
-                canActivate: [authGuard]
+                canActivate: [authGuard] // Protegida por el guard de autenticación
             },
             {
-                path: 'shop',
+                path: 'shop', // Ruta para la tienda
                 loadComponent: () => import('./pages/shop/shop.component').then(m => m.ShopComponent),
-                canActivate: [authGuard]
+                canActivate: [authGuard] // Protegida por el guard de autenticación
             },
             {
-                path: 'home',
+                path: 'home', // Ruta de inicio
                 loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
-                canActivate: [authGuard]
+                canActivate: [authGuard] // Protegida por el guard de autenticación
             },
             {
-                path: 'login',
+                path: 'login', // Ruta para la pantalla de login
                 loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent)
             },
-            
         ],
     },
     {
-        path: '**',
-        redirectTo: 'login'
+        path: '**', // Cualquier otra ruta no definida
+        redirectTo: 'login' // Redirige al login
     }
-
 ];

@@ -1,6 +1,6 @@
 <aside class="bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0">
     <div class="relative border-b border-white/20">
-      <a class="flex items-center gap-4 py-6 px-8" href="/home">
+      <a class="flex items-center gap-4 py-6 px-8" href="/inicio">
         <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-white">Test Met Group</h6>
       </a>
       <button class="middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden" type="button">
@@ -60,5 +60,16 @@
         </li>
         
       </ul>
+      <li class="mt-auto">
+        <button 
+          (click)="logout()" 
+          class="middle none font-sans font-bold transition-all text-xs py-3 rounded-lg text-white bg-red-600 hover:bg-red-700 active:bg-red-800 flex w-full items-center gap-4 px-4 capitalize">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-inherit">
+            <path fill-rule="evenodd" d="M7.5 3.75A.75.75 0 018.25 3h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM3.75 6A.75.75 0 013 6.75v10.5a.75.75 0 001.5 0V6.75A.75.75 0 013.75 6zM8.25 20.25a.75.75 0 000-1.5h-1.5a.75.75 0 000 1.5h1.5zM18 11.25h-7.25a.75.75 0 000 1.5H18v2.25a.75.75 0 001.28.53l3-3a.75.75 0 000-1.06l-3-3A.75.75 0 0018 8.25v2.25z" clip-rule="evenodd"/>
+          </svg>
+          <p class="block text-base leading-relaxed text-inherit font-medium capitalize">Cerrar sesión</p>
+        </button>
+      </li>
+      
     </div>
   </aside>

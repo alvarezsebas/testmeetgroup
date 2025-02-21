@@ -14,25 +14,46 @@
               [class.text-white]="i === tiendaSeleccionada"
               [class.bg-gray-200]="i !== tiendaSeleccionada"
               [class.text-gray-700]="i !== tiendaSeleccionada">
-        {{ tienda.nombre }}
+        {{ tienda.name }}
         <button (click)="eliminarTienda(i)" class="ml-2 text-red-500">✖</button>
       </button>
     </div>
   
-    <div class="p-6">
-      <h2 class="text-xl font-bold text-gray-800">Productos de {{ tiendas[tiendaSeleccionada].nombre }}</h2>
+    <div class="p-6" *ngIf="tiendaSeleccionada >= 0 && tiendaSeleccionada < tiendas.length">
+      <h2 class="text-xl font-bold text-gray-800">Productos de {{ tiendas[tiendaSeleccionada].name }}</h2>
       
       <div class="mb-4 flex space-x-2">
-        <input [(ngModel)]="nuevoProducto" class="border p-2 rounded w-full" placeholder="Nombre del producto" />
+        <input [(ngModel)]="nuevoProducto.name" class="border p-2 rounded w-1/2" placeholder="Nombre del producto" />
+        <input [(ngModel)]="nuevoProducto.price" type="number" class="border p-2 rounded w-1/2" placeholder="Precio del producto" />
         <button (click)="agregarProducto()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Agregar</button>
       </div>
       
       <ul class="mt-4 space-y-3">
-        <li *ngFor="let producto of tiendas[tiendaSeleccionada].productos; let j = index" 
+        <li *ngFor="let producto of tiendas[tiendaSeleccionada].items; let j = index" 
             class="p-4 border rounded-lg shadow-md bg-gray-50 flex justify-between items-center">
-          {{ producto }}
-          <button (click)="eliminarProducto(j)" class="text-red-500">✖</button>
+          
+          <div class="flex items-center space-x-3 w-full">
+            <!-- Mostrar input si está en modo edición -->
+            <input *ngIf="productoEditando === j" [(ngModel)]="producto.name" class="border p-2 rounded w-1/3" />
+            <input *ngIf="productoEditando === j" [(ngModel)]="producto.price" type="number" class="border p-2 rounded w-1/3" />
+
+            <!-- Mostrar texto normal si no está en edición -->
+            <span *ngIf="productoEditando !== j">{{ producto.name }} - ${{ producto.price }}</span>
+          </div>
+
+          <div class="flex space-x-2">
+            <!-- Botón de Editar -->
+            <button *ngIf="productoEditando !== j" (click)="editarProducto(j)" class="text-blue-500">✏️</button>
+            
+            <!-- Botón de Guardar -->
+            <button *ngIf="productoEditando === j" (click)="actualizarProducto(j)" class="text-green-500">💾</button>
+
+            <!-- Botón de Eliminar -->
+            <button (click)="eliminarProducto(j)" class="text-red-500">❌</button>
+          </div>
+
         </li>
       </ul>
     </div>
   </div>
+

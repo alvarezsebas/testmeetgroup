@@ -14,7 +14,10 @@ import { CommonModule } from '@angular/common';
 export class LayoutComponent {
 constructor(private authService: AuthService) {}
 
-  isLoggedIn(): boolean {
-    return this.authService.isLoggedIn();
-  }
+isLoggedIn(): boolean {
+  // Llama al método isLoggedIn() del servicio AuthService
+  // para verificar si el usuario está autenticado.
+  return this.authService.isLoggedIn();
+}
+
 }
